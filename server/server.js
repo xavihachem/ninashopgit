@@ -3,20 +3,19 @@ require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser');
 
 const app = express();
 const port = Number(process.env.PORT) || 5000;
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.NODE_ENV === 'production' ? true : 'http://localhost:3000',
   credentials: true
 }));
 
-// Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// Body parsing middleware (no body-parser dependency)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Helper to mask sensitive values in logs
 const mask = (val) => (val ? val.replace(/.(?=.{4})/g, '*') : '');
@@ -145,7 +144,23 @@ Order Date: ${new Date().toLocaleString()}
   }
 });
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Server error:', err);
+  res.status(500).json({ 
+    success: false, 
+    message: 'Internal server error',
+    error: process.env.NODE_ENV === 'production' ? {} : err.message
+  });
+});
+
 // Start server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+const server = app.listen(port, '0.0.0.0', () => {
+  console.log(`Server is running in ${process.env.NODE_ENV || 'development'} mode on port ${port}`);
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled Rejection:', err);
+  server.close(() => process.exit(1));
 });

@@ -56,6 +56,9 @@ const UsageInstructions = () => {
     }));
   };
 
+  // Use relative URL in production, absolute in development
+  const API_BASE = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -76,7 +79,7 @@ const UsageInstructions = () => {
     
     try {
       console.log('[Order] Submitting payload', formData);
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/send-order`, {
+      const response = await fetch(`${API_BASE}/api/send-order`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
