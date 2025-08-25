@@ -22,17 +22,27 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  min-height: calc(100vh - 100px);
 }
 
 .hero-text {
   flex: 1;
   max-width: 550px;
-  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 4rem 0 2rem;
+  margin-top: 2rem;
 }
 
 .hero-text .typing-text,
 .hero-text .hero-description {
   text-align: right;
+  margin: 0;
+}
+
+.typing-text {
+  margin-bottom: 1.5rem !important;
 }
 
 .mobile-content-below-image {
@@ -40,8 +50,10 @@
   max-width: 500px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   position: relative;
+  padding: 2rem 0;
 }
 
 /* Desktop-specific styles */
