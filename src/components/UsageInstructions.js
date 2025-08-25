@@ -50,10 +50,12 @@ const UsageInstructions = () => {
   };
 
   const handleInputChange = (e) => {
-    const { id, value } = e.target;
+    const { id, value, type, name } = e.target;
+    
     setFormData(prev => ({
       ...prev,
-      [id]: id === 'quantity' ? parseInt(value, 10) || 1 : value
+      // For radio buttons, use the 'name' attribute instead of 'id'
+      [type === 'radio' ? name : id]: type === 'number' ? parseInt(value, 10) || 1 : value
     }));
   };
 
@@ -64,7 +66,7 @@ const UsageInstructions = () => {
     e.preventDefault();
     
     // Basic validation
-    if (!formData.fullName.trim() || !formData.phone.trim() || !formData.state) {
+    if (!formData.fullName.trim() || !formData.phone.trim() || !formData.state || !formData.deliveryMethod) {
       setSubmitStatus({ success: false, message: 'الرجاء ملء جميع الحقول المطلوبة' });
       return;
     }
@@ -240,6 +242,7 @@ const UsageInstructions = () => {
                     <input
                       type="radio"
                       name="deliveryMethod"
+                      id="delivery-office"
                       value="office"
                       checked={formData.deliveryMethod === 'office'}
                       onChange={handleInputChange}
@@ -255,6 +258,7 @@ const UsageInstructions = () => {
                     <input
                       type="radio"
                       name="deliveryMethod"
+                      id="delivery-post"
                       value="post"
                       checked={formData.deliveryMethod === 'post'}
                       onChange={handleInputChange}
