@@ -96,7 +96,12 @@ app.get('/api/smtp-verify', async (req, res) => {
 // Send email endpoint
 app.post('/api/send-order', async (req, res) => {
   try {
-    const { fullName, phone, state, quantity } = req.body;
+    const { fullName, phone, state, quantity, deliveryMethod } = req.body;
+    
+    // Map delivery method to display text
+    const deliveryText = deliveryMethod === 'office' 
+      ? 'توصيل الى المكتب (Office Delivery)' 
+      : 'توصيل الى مكتب البريد (Post Office Delivery)';
 
     const mailOptions = {
       from: `"Ninashop" <${process.env.FROM_EMAIL}>`,
@@ -108,6 +113,7 @@ Name: ${fullName}
 Phone: ${phone}
 State: ${state}
 Quantity: ${quantity}
+Delivery Method: ${deliveryText}
 
 Order Date: ${new Date().toLocaleString()}
       `,
@@ -119,6 +125,7 @@ Order Date: ${new Date().toLocaleString()}
             <p><strong>📞 Phone:</strong> ${phone}</p>
             <p><strong>📍 State:</strong> ${state}</p>
             <p><strong>📦 Quantity:</strong> ${quantity}</p>
+            <p><strong>🚚 Delivery Method:</strong> ${deliveryText}</p>
           </div>
           <p style="margin-top: 20px; color: #666; font-size: 0.9em;">
             Order received on ${new Date().toLocaleString()}
