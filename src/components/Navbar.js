@@ -26,15 +26,25 @@ const Navbar = () => {
 
   const navLinks = [
     { id: 'home', text: 'الرئيسية' },
+    { id: 'order', text: 'الطلب الان' },
     { id: 'product', text: 'المنتج' },
-    { id: 'usage', text: 'طريقة الاستخدام' },
-    { id: 'order', text: 'الطلب الان' }
+    { id: 'usage', text: 'طريقة الاستخدام' }
   ];
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const headerOffset = 80; // Match this with your header height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      // Update URL without page reload
+      window.history.pushState({}, '', `#${id}`);
       setIsMenuOpen(false);
     }
   };

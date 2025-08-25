@@ -9,15 +9,22 @@ function App() {
   // Add smooth scrolling for anchor links
   useEffect(() => {
     const handleAnchorClick = (e) => {
-      const targetId = e.target.getAttribute('href');
-      if (targetId && targetId.startsWith('#')) {
-        e.preventDefault();
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80, // Adjust for fixed header
-            behavior: 'smooth'
-          });
+      // Only handle clicks on anchor elements
+      if (e.target.tagName === 'A') {
+        const targetId = e.target.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault();
+          const targetElement = document.getElementById(targetId.substring(1));
+          if (targetElement) {
+            const headerOffset = 80; // Height of your fixed header
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
         }
       }
     };
@@ -39,7 +46,28 @@ function App() {
           <Hero />
         </section>
         <section id="order" className="section">
-          {/* Order section content */}
+          <div className="container">
+            <h2>اطلب منتجك الآن</h2>
+            <p style={{ maxWidth: '600px', margin: '0 auto 2rem' }}>
+              اختر اللون المفضل لديك واملأ النموذج أدناه لإكمال طلبك. سنقوم بالتواصل معك قريباً لتأكيد التفاصيل.
+            </p>
+            <div style={{ marginTop: '2rem' }}>
+              <button style={{
+                background: '#ff6b6b',
+                color: 'white',
+                border: 'none',
+                padding: '1rem 2.5rem',
+                borderRadius: '50px',
+                fontSize: '1.1rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 15px rgba(255, 107, 107, 0.3)'
+              }}>
+                اكمل الطلب - 49.99 ريال
+              </button>
+            </div>
+          </div>
         </section>
         <section id="product" className="section">
           <Product />
