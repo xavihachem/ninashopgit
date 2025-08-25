@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import OrderForm from './components/OrderForm';
 import Product from './components/Product';
 import UsageInstructions from './components/UsageInstructions';
 
@@ -39,7 +38,9 @@ function App() {
         <section id="home" className="section">
           <Hero />
         </section>
-        <OrderForm />
+        <section id="order" className="section">
+          {/* Order section content */}
+        </section>
         <section id="product" className="section">
           <Product />
         </section>
