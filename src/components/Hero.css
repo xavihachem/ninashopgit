@@ -176,13 +176,15 @@
 @media (min-width: 768px) {
   .hero-content {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 4rem;
+    position: relative;
   }
   
   .hero-text {
     flex: 1;
     text-align: right;
+    margin-bottom: 42rem; /* Add 42rem bottom margin */
   }
   
   .typing-text,
@@ -196,8 +198,20 @@
   }
   
   .product-image-container {
-    flex: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
     max-width: 500px;
+    width: 50%;
+  }
+  
+  /* Position the order button under the hero text */
+  .mobile-content-below-image {
+    position: absolute;
+    top: 20rem; /* Adjust this value based on your content height */
+    right: 0;
+    width: 50%;
+    padding-left: 2rem;
   }
 }
 
@@ -246,11 +260,5 @@
     font-size: 1.1rem;
   }
   
-  .hero-text {
-    order: 1;
-  }
-  
-  .mobile-content-below-image {
-    order: 2;
-  }
+  /* Remove mobile-specific orders as we're handling positioning in desktop view */
 }
