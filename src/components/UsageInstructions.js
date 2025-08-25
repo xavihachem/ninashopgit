@@ -137,7 +137,7 @@ const UsageInstructions = () => {
   };
 
   return (
-    <section className="usage-instructions">
+    <section id="usage" className="usage-instructions">
       <div className="container">
         <div className="order-section">
           <div className="order-container">
