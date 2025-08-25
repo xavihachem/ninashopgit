@@ -67,31 +67,53 @@
 
 /* Product Carousel */
 .product-carousel {
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0 1rem;
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   position: relative;
+  
+  @media (min-width: 768px) {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
 }
 
 .carousel-container {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 8px;
   background: #f8f9fa;
-  padding: 30px;
+  padding: 15px;
   text-align: center;
+  
+  @media (min-width: 768px) {
+    padding: 30px;
+    border-radius: 12px;
+  }
 }
 
 .carousel-image {
   max-width: 100%;
   height: auto;
-  max-height: 500px;
-  border-radius: 8px;
+  max-height: 300px;
+  border-radius: 6px;
   transition: transform 0.5s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  
+  @media (min-width: 768px) {
+    max-height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  @media (min-width: 992px) {
+    max-height: 500px;
+  }
 }
 
 .zoom-effect {
@@ -102,9 +124,15 @@
 .carousel-navigation {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
-  padding: 10px 0;
+  gap: 8px;
+  margin: 15px 0 5px;
+  padding: 5px 0;
+  
+  @media (min-width: 768px) {
+    gap: 12px;
+    margin-top: 20px;
+    padding: 10px 0;
+  }
 }
 
 .nav-dot {
@@ -135,32 +163,60 @@
 }
 
 .carousel-features {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 15px 10px;
   background: #f8f9fa;
   border-top: 1px solid #eee;
+  text-align: center;
+  
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    text-align: left;
+  }
 }
 
 .feature {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  font-size: 1rem;
+  gap: 5px;
+  font-size: 0.85rem;
   color: #555;
+  text-align: center;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    font-size: 1rem;
+    text-align: left;
+  }
 }
 
 .feature-icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background: #2a2a2a;
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  
+  @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+  }
 }
 
 .product-image-container.zoomed {
