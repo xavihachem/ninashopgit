@@ -8,8 +8,15 @@ const UsageInstructions = () => {
     fullName: '',
     phone: '',
     state: '',
-    quantity: 1
+    quantity: '1',
+    color: 'أبيض' // Default color
   });
+  
+  const colors = [
+    { id: 'white', name: 'أبيض', value: 'أبيض' },
+    { id: 'grey', name: 'رمادي', value: 'رمادي' },
+    { id: 'brown', name: 'بني', value: 'بني' }
+  ];
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
@@ -107,12 +114,13 @@ const UsageInstructions = () => {
           message: 'تم استلام طلبك بنجاح! سنتواصل معك قريباً.'
         });
 
-        // Reset form
+        // Reset form but keep the color selection
         setFormData({
           fullName: '',
           phone: '',
           state: '',
-          quantity: 1
+          quantity: '1',
+          color: formData.color // Keep the last selected color
         });
       } else {
         throw new Error(data.message || 'فشل إرسال الطلب');
@@ -186,6 +194,23 @@ const UsageInstructions = () => {
                 />
                 <label htmlFor="state">الولاية</label>
                 <span className="form-icon">📍</span>
+              </div>
+              
+              <div className="form-group color-selection">
+                <label>اختر اللون</label>
+                <div className="color-options">
+                  {colors.map((color) => (
+                    <div 
+                      key={color.id}
+                      className={`color-option ${formData.color === color.value ? 'selected' : ''}`}
+                      onClick={() => setFormData({...formData, color: color.value})}
+                      style={{ backgroundColor: color.id === 'white' ? '#ffffff' : color.id === 'grey' ? '#808080' : '#8B4513' }}
+                      title={color.name}
+                    >
+                      {formData.color === color.value && <span className="checkmark">✓</span>}
+                    </div>
+                  ))}
+                </div>
               </div>
               
               <div className="form-group floating quantity-group">
