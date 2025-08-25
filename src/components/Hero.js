@@ -60,6 +60,23 @@ const Hero = () => {
                 <span>تصميم أنيق وجذاب</span>
               </div>
             </div>
+          </div>
+
+          <div className="mobile-content-below-image">
+            <div 
+              className="product-image-container"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <img 
+                src={selectedProduct.image} 
+                alt={`أداة نزع أحذية خشبية باللون ${selectedProduct.colorName}`}
+                className={`product-image ${isAnimating ? 'fade-out' : 'fade-in'} ${isHovered ? 'zoomed' : ''}`}
+              />
+              <div className="product-zoom-hint">
+                مرر مؤشر الفأرة فوق الصورة للتكبير
+              </div>
+            </div>
             
             <div className="color-selector">
               <h3 className="color-title">اختر اللون:</h3>
@@ -86,21 +103,6 @@ const Hero = () => {
             >
               اطلب الآن - 49.99 ريال
             </button>
-          </div>
-
-          <div 
-            className="product-image-container"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <img 
-              src={selectedProduct.image} 
-              alt={`أداة نزع أحذية خشبية باللون ${selectedProduct.colorName}`}
-              className={`product-image ${isAnimating ? 'fade-out' : 'fade-in'} ${isHovered ? 'zoomed' : ''}`}
-            />
-            <div className="product-zoom-hint">
-              مرر مؤشر الفأرة فوق الصورة للتكبير
-            </div>
           </div>
         </div>
       </div>
