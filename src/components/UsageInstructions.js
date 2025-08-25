@@ -8,8 +8,7 @@ const UsageInstructions = () => {
     fullName: '',
     phone: '',
     state: '',
-    quantity: 1,
-    deliveryMethod: 'office' // Default to 'office' (توصيل الى المكتب)
+    quantity: 1
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -50,12 +49,10 @@ const UsageInstructions = () => {
   };
 
   const handleInputChange = (e) => {
-    const { id, value, type, name } = e.target;
-    
+    const { id, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      // For radio buttons, use the 'name' attribute instead of 'id'
-      [type === 'radio' ? name : id]: type === 'number' ? parseInt(value, 10) || 1 : value
+      [id]: id === 'quantity' ? parseInt(value, 10) || 1 : value
     }));
   };
 
@@ -66,7 +63,7 @@ const UsageInstructions = () => {
     e.preventDefault();
     
     // Basic validation
-    if (!formData.fullName.trim() || !formData.phone.trim() || !formData.state || !formData.deliveryMethod) {
+    if (!formData.fullName.trim() || !formData.phone.trim() || !formData.state) {
       setSubmitStatus({ success: false, message: 'الرجاء ملء جميع الحقول المطلوبة' });
       return;
     }
@@ -233,43 +230,6 @@ const UsageInstructions = () => {
                 </div>
                 <label htmlFor="quantity">الكمية المطلوبة</label>
                 <span className="form-icon">📦</span>
-              </div>
-
-              <div className="form-group">
-                <label className="delivery-method-label">طريقة التوصيل</label>
-                <div className="delivery-options">
-                  <label className={`delivery-option ${formData.deliveryMethod === 'office' ? 'active' : ''}`}>
-                    <input
-                      type="radio"
-                      name="deliveryMethod"
-                      id="delivery-office"
-                      value="office"
-                      checked={formData.deliveryMethod === 'office'}
-                      onChange={handleInputChange}
-                      className="delivery-radio"
-                    />
-                    <span className="delivery-option-content">
-                      <span className="delivery-icon">🏢</span>
-                      <span className="delivery-text">توصيل الى المكتب</span>
-                    </span>
-                  </label>
-                  
-                  <label className={`delivery-option ${formData.deliveryMethod === 'post' ? 'active' : ''}`}>
-                    <input
-                      type="radio"
-                      name="deliveryMethod"
-                      id="delivery-post"
-                      value="post"
-                      checked={formData.deliveryMethod === 'post'}
-                      onChange={handleInputChange}
-                      className="delivery-radio"
-                    />
-                    <span className="delivery-option-content">
-                      <span className="delivery-icon">📮</span>
-                      <span className="delivery-text">توصيل الى مكتب البريد</span>
-                    </span>
-                  </label>
-                </div>
               </div>
               
               <button 
