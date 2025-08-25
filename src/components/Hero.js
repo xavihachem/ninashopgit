@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Hero.css';
+import productImage1 from '../assets/product1.jpg';
+import productImage2 from '../assets/product2.jpg';
+import productImage5 from '../assets/product5.jpg';
 import TypingEffect from './TypingEffect';
-import whiteProduct from '../assets/product3.jpg';
-import greyProduct from '../assets/product6.jpg';
-import brownProduct from '../assets/product4.jpg';
 
-const products = [
-  { id: 'white', colorName: 'أبيض', image: whiteProduct },
-  { id: 'grey', colorName: 'رمادي', image: greyProduct },
-  { id: 'brown', colorName: 'بني', image: brownProduct },
-];
+const images = [productImage1, productImage2, productImage5];
 
 const Hero = () => {
-  const [selectedProduct, setSelectedProduct] = useState(products[0]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const imageRef = useRef(null);
 
-  const handleColorSelect = (product) => {
-    if (selectedProduct.id !== product.id) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setSelectedProduct(product);
-        const img = new Image();
-        img.src = product.image;
-        img.onload = () => {
-          setIsAnimating(false);
-        };
-      }, 300);
-    }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isHovered) {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
+  const handleImageHover = () => {
+    setIsHovered(true);
+  };
+
+  const handleImageLeave = () => {
+    setIsHovered(false);
   };
 
   return (
@@ -40,40 +40,18 @@ const Hero = () => {
             className="typing-text"
           />
           <p className="hero-description">نقدم لك أداة نزع الأحذية الخشبية، الحل الأمثل لراحتك اليومية دون الحاجة للانحناء. مصنوعة يدوياً من أجود أنواع الخشب الطبيعي.</p>
-          
-          <div className="color-selector">
-            <h3>اختر اللون:</h3>
-            <div className="color-options">
-              {products.map((product) => (
-                <div 
-                  key={product.id}
-                  className={`color-option ${selectedProduct.id === product.id ? 'active' : ''}`}
-                  onClick={() => handleColorSelect(product)}
-                >
-                  <div className="color-box" style={{
-                    backgroundImage: `url(${product.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  }} />
-                  <span>{product.colorName}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          
           <div className="hero-features">
             <div className="feature-item">✓ نزع سهل بدون انحناء</div>
             <div className="feature-item">✓ جودة تدوم لسنوات</div>
             <div className="feature-item">✓ تصميم أنيق وجذاب</div>
           </div>
-          
           <div className="desktop-button">
             <button 
               className="cta-button"
               onClick={() => {
-                const usageSection = document.getElementById('usage');
-                if (usageSection) {
-                  usageSection.scrollIntoView({ behavior: 'smooth' });
+                const productSection = document.getElementById('product');
+                if (productSection) {
+                  productSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
             >
@@ -82,26 +60,39 @@ const Hero = () => {
           </div>
         </div>
         <div className="hero-image-content">
-          <div className="hero-image">
-            <div 
-              className={`product-image-container ${isHovered ? 'zoomed' : ''} ${isAnimating ? 'fade-out' : 'fade-in'}`}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
+          <div 
+            className={`image-container ${isHovered ? 'zoomed' : ''}`}
+            onMouseEnter={handleImageHover}
+            onMouseLeave={handleImageLeave}
+            ref={imageRef}
+          >
+            <div className="image-wrapper">
               <img 
-                src={selectedProduct.image} 
-                alt={`Product in ${selectedProduct.id}`} 
-                className="main-product-image"
+                src={images[currentImageIndex]} 
+                alt="Product Shot" 
+                className={`hero-image ${isHovered ? 'zoomed' : ''}`} 
               />
+              <div className="image-overlay">
+                <div className="image-badge">جديد</div>
+              </div>
+            </div>
+            <div className="image-dots">
+              {images.map((_, index) => (
+                <span 
+                  key={index} 
+                  className={`dot ${currentImageIndex === index ? 'active' : ''}`}
+                  onClick={() => setCurrentImageIndex(index)}
+                />
+              ))}
             </div>
           </div>
           <div className="mobile-button">
             <button 
               className="cta-button"
               onClick={() => {
-                const usageSection = document.getElementById('usage');
-                if (usageSection) {
-                  usageSection.scrollIntoView({ behavior: 'smooth' });
+                const productSection = document.getElementById('product');
+                if (productSection) {
+                  productSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
             >
