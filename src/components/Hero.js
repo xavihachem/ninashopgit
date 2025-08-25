@@ -25,9 +25,18 @@ const Hero = () => {
   };
 
   const scrollToProduct = () => {
-    const productSection = document.getElementById('product');
-    if (productSection) {
-      productSection.scrollIntoView({ behavior: 'smooth' });
+    const usageSection = document.getElementById('usage');
+    if (usageSection) {
+      // First scroll to the usage section
+      usageSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // Then scroll to the order form within the usage section
+      setTimeout(() => {
+        const orderSection = document.querySelector('.order-section');
+        if (orderSection) {
+          orderSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     }
   };
 

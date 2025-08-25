@@ -8,7 +8,8 @@ const UsageInstructions = () => {
     fullName: '',
     phone: '',
     state: '',
-    quantity: 1
+    quantity: 1,
+    deliveryMethod: 'office' // Default to 'office' (توصيل الى المكتب)
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -230,6 +231,41 @@ const UsageInstructions = () => {
                 </div>
                 <label htmlFor="quantity">الكمية المطلوبة</label>
                 <span className="form-icon">📦</span>
+              </div>
+
+              <div className="form-group">
+                <label className="delivery-method-label">طريقة التوصيل</label>
+                <div className="delivery-options">
+                  <label className={`delivery-option ${formData.deliveryMethod === 'office' ? 'active' : ''}`}>
+                    <input
+                      type="radio"
+                      name="deliveryMethod"
+                      value="office"
+                      checked={formData.deliveryMethod === 'office'}
+                      onChange={handleInputChange}
+                      className="delivery-radio"
+                    />
+                    <span className="delivery-option-content">
+                      <span className="delivery-icon">🏢</span>
+                      <span className="delivery-text">توصيل الى المكتب</span>
+                    </span>
+                  </label>
+                  
+                  <label className={`delivery-option ${formData.deliveryMethod === 'post' ? 'active' : ''}`}>
+                    <input
+                      type="radio"
+                      name="deliveryMethod"
+                      value="post"
+                      checked={formData.deliveryMethod === 'post'}
+                      onChange={handleInputChange}
+                      className="delivery-radio"
+                    />
+                    <span className="delivery-option-content">
+                      <span className="delivery-icon">📮</span>
+                      <span className="delivery-text">توصيل الى مكتب البريد</span>
+                    </span>
+                  </label>
+                </div>
               </div>
               
               <button 
