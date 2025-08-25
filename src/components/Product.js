@@ -59,9 +59,9 @@ const Product = () => {
             <div className="product-badge">جديد</div>
           </div>
           <div className="color-selector">
-            <h3 className="color-selector-title">اختر لونك المفضل</h3>
+            <h3 className="color-selector-title">الألوان المتاحة</h3>
             <div className="carousel-caption">
-              <p>متوفر بعدة ألوان تناسب جميع الأذواق</p>
+              <p>تصميم أنيق وعملي لراحة قصوى</p>
             </div>
           </div>
           <div className="carousel-features">
