@@ -1,3 +1,64 @@
+/* Color Selector */
+.color-selector {
+  margin: 25px 0;
+  text-align: right;
+}
+
+.color-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.color-options {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.color-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.color-option:hover {
+  transform: translateY(-3px);
+}
+
+.color-option.active {
+  position: relative;
+}
+
+.color-option.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  width: 20px;
+  height: 3px;
+  background-color: #2a2a2a;
+  border-radius: 2px;
+}
+
+.color-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  border: 2px solid #eee;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.color-option.active .color-circle {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px #2a2a2a;
+}
+
 /* Typing Effect Styles */
 @keyframes blink {
   0%, 100% { opacity: 1; }
@@ -34,6 +95,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
+  direction: rtl;
 }
 
 .hero::before {
@@ -49,15 +111,29 @@
 }
 
 .hero-container {
-  max-width: 1300px;
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 60px;
   position: relative;
   z-index: 1;
+  flex-wrap: wrap;
+}
+
+.hero-text-content {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.hero-image-content {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-text-content {
@@ -200,6 +276,46 @@
 
 .cta-button:hover .button-icon {
   transform: translateX(8px);
+}
+
+/* Product Image Container */
+.product-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  background: white;
+  padding: 20px;
+}
+
+.main-product-image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+  display: block;
+  border-radius: 8px;
+}
+
+.product-image-container.zoomed .main-product-image {
+  transform: scale(1.5);
+  cursor: zoom-out;
+}
+
+.product-zoom-hint {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #666;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.hero-image:hover .product-zoom-hint {
+  opacity: 1;
 }
 
 /* Image Container */

@@ -4,6 +4,7 @@
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   position: relative;
   overflow: hidden;
+  direction: rtl;
 }
 
 .product-section::before {
@@ -64,39 +65,102 @@
   animation: slideIn 1s ease-out;
 }
 
-/* Product Display */
-.product-display {
-  display: flex;
-  gap: 3rem;
-  margin-top: 2rem;
+/* Product Carousel */
+.product-carousel {
+  max-width: 1000px;
+  margin: 0 auto;
   background: white;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  padding: 2rem;
-  position: relative;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  position: relative;
 }
 
-.product-display:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* Product Image Container */
-.product-image-container {
-  flex: 1;
+.carousel-container {
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  background: #fff;
-  min-height: 400px;
+  background: #f8f9fa;
+  padding: 30px;
+  text-align: center;
+}
+
+.carousel-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+  border-radius: 8px;
+  transition: transform 0.5s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.zoom-effect {
+  transform: scale(1.05);
+  cursor: zoom-out;
+}
+
+.carousel-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ddd;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-dot:hover {
+  background: #aaa;
+}
+
+.nav-dot.active {
+  background: #2a2a2a;
+  transform: scale(1.2);
+}
+
+.carousel-caption {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #444;
+  font-weight: 500;
+}
+
+.carousel-features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #eee;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.feature-icon {
+  width: 24px;
+  height: 24px;
+  background: #2a2a2a;
+  color: white;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  font-size: 0.8rem;
 }
 
 .product-image-container.zoomed {
@@ -198,7 +262,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 1.25rem;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 
 .color-option {
@@ -324,7 +388,89 @@
 
 /* Product Actions - Removed */
 
-/* Responsive Design */
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .product-carousel {
+    max-width: 90%;
+  }
+  
+  .carousel-image {
+    max-height: 400px;
+  }
+  
+  .carousel-features {
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 15px 10px;
+  }
+  
+  .feature {
+    flex: 1 0 40%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-carousel {
+    margin: 0 0.5rem;
+    border-radius: 12px;
+  }
+  
+  .carousel-container {
+    padding: 15px;
+  }
+  
+  .carousel-image {
+    max-height: 350px;
+  }
+  
+  .carousel-navigation {
+    margin-top: 15px;
+    gap: 8px;
+  }
+  
+  .nav-dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .carousel-caption {
+    font-size: 1rem;
+    margin-top: 15px;
+  }
+  
+  .carousel-features {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px 10px;
+  }
+  
+  .feature {
+    flex: 1 0 auto;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 8px 0;
+  }
+  
+  .feature-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .carousel-image.zoom-effect {
+    transform: none;
+    cursor: default;
+  }
+  
+  .product-image-container.zoomed .main-product-image {
+    transform: none;
+  }
+}
+
 @media (max-width: 992px) {
   .product-display {
     flex-direction: column;
