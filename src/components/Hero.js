@@ -45,21 +45,6 @@ const Hero = () => {
               نقدم لك أداة نزع الأحذية الخشبية، الحل الأمثل لراحتك اليومية 
               دون الحاجة للانحناء. مصنوعة يدوياً من أجود أنواع الخشب الطبيعي.
             </p>
-            
-            <div className="features-grid">
-              <div className="feature-item">
-                <span className="feature-icon">✓</span>
-                <span>نزع سهل بدون انحناء</span>
-              </div>
-              <div className="feature-item">
-                <span className="feature-icon">✓</span>
-                <span>جودة تدوم لسنوات</span>
-              </div>
-              <div className="feature-item">
-                <span className="feature-icon">✓</span>
-                <span>تصميم أنيق وجذاب</span>
-              </div>
-            </div>
           </div>
 
           <div className="mobile-content-below-image">
