@@ -39,9 +39,6 @@ function App() {
         <section id="home" className="section">
           <Hero />
         </section>
-        <section id="order" className="section">
-          {/* Order section content */}
-        </section>
         <section id="usage" className="section">
           <UsageInstructions />
         </section>
