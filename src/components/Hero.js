@@ -41,7 +41,7 @@ const Hero = () => {
           />
           <p className="hero-description">نقدم لك أداة نزع الأحذية الخشبية، الحل الأمثل لراحتك اليومية دون الحاجة للانحناء. مصنوعة يدوياً من أجود أنواع الخشب الطبيعي.</p>
           
-          <div className="color-selector">
+          <div className="color-selector desktop-only">
             <h3 className="color-title">اختر اللون الذي يناسبك:</h3>
             <div className="color-options">
               {products.map((product) => (
@@ -57,7 +57,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="hero-features">
+          <div className="hero-features desktop-only">
             <div className="feature-item">✓ نزع سهل بدون انحناء</div>
             <div className="feature-item">✓ جودة تدوم لسنوات</div>
             <div className="feature-item">✓ تصميم أنيق وجذاب</div>
@@ -105,6 +105,28 @@ const Hero = () => {
             >
               <span className="button-text">تصفح المنتج</span>
             </button>
+          </div>
+          {/* Mobile-only colors after image */}
+          <div className="color-selector mobile-only">
+            <h3 className="color-title">اختر اللون الذي يناسبك:</h3>
+            <div className="color-options">
+              {products.map((product) => (
+                <div 
+                  key={product.id}
+                  className={`color-option ${selectedProduct.id === product.id ? 'active' : ''}`}
+                  onClick={() => handleColorSelect(product)}
+                >
+                  <div className="color-circle" style={{ background: product.colorName === 'أبيض' ? '#ffffff' : product.colorName === 'رمادي' ? '#808080' : '#8B4513' }}></div>
+                  <span>{product.colorName}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Mobile-only features after colors */}
+          <div className="hero-features mobile-only">
+            <div className="feature-item">✓ نزع سهل بدون انحناء</div>
+            <div className="feature-item">✓ جودة تدوم لسنوات</div>
+            <div className="feature-item">✓ تصميم أنيق وجذاب</div>
           </div>
         </div>
       </div>
