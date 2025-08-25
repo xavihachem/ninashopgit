@@ -131,43 +131,6 @@ const UsageInstructions = () => {
   return (
     <section className="usage-instructions">
       <div className="container">
-        <div className="section-header">
-          <h2 className="section-title">
-            <span className="title-text">كيفية الاستخدام</span>
-          </h2>
-          <p className="section-subtitle">دليل بسيط لاستخدام المنتج</p>
-        </div>
-
-        <div className="step-container">
-          <div className="step-image">
-            <img src={steps[activeStep].image} alt={steps[activeStep].title} />
-          </div>
-          <div className="step-content">
-            <div className="step-indicator">
-              {steps.map((_, index) => (
-                <div 
-                  key={index}
-                  className={`step-dot ${index === activeStep ? 'active' : ''}`}
-                  onClick={() => setActiveStep(index)}
-                />
-              ))}
-            </div>
-            <div className="step-details">
-              <span className="step-emoji">{steps[activeStep].emoji}</span>
-              <h3 className="step-title">{steps[activeStep].title}</h3>
-              <p className="step-description">{steps[activeStep].description}</p>
-            </div>
-            <div className="step-navigation">
-              <button className="nav-btn prev" onClick={prevStep}>
-                السابق
-              </button>
-              <button className="nav-btn next" onClick={nextStep}>
-                التالي
-              </button>
-            </div>
-          </div>
-        </div>
-
         <div className="order-section">
           <div className="order-container">
             <div className="order-header">
@@ -291,6 +254,43 @@ const UsageInstructions = () => {
                 <span>🔒 دفع آمن</span>
                 <span>📞 دعم فوري</span>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="section-header">
+          <h2 className="section-title">
+            <span className="title-text">كيفية الاستخدام</span>
+          </h2>
+          <p className="section-subtitle">دليل بسيط لاستخدام المنتج</p>
+        </div>
+
+        <div className="step-container">
+          <div className="step-image">
+            <img src={steps[activeStep].image} alt={steps[activeStep].title} />
+          </div>
+          <div className="step-content">
+            <div className="step-indicator">
+              {steps.map((_, index) => (
+                <div 
+                  key={index}
+                  className={`step-dot ${index === activeStep ? 'active' : ''}`}
+                  onClick={() => setActiveStep(index)}
+                />
+              ))}
+            </div>
+            <div className="step-details">
+              <span className="step-emoji">{steps[activeStep].emoji}</span>
+              <h3 className="step-title">{steps[activeStep].title}</h3>
+              <p className="step-description">{steps[activeStep].description}</p>
+            </div>
+            <div className="step-navigation">
+              <button className="nav-btn prev" onClick={prevStep}>
+                السابق
+              </button>
+              <button className="nav-btn next" onClick={nextStep}>
+                التالي
+              </button>
             </div>
           </div>
         </div>
