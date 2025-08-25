@@ -62,52 +62,76 @@
 /* Tablet and Mobile Adjustments */
 @media (max-width: 1024px) {
   .hero {
-    padding: 2rem 0;
+    padding: 1rem 0 2rem;
     min-height: auto;
   }
   
   .hero-container {
-    flex-direction: column-reverse;
-    gap: 2rem;
-    padding: 40px 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem;
     min-height: auto;
   }
   
-  .hero-text-content,
   .hero-image-content {
-    min-width: 100%;
-    max-width: 100%;
+    order: -1;
+    margin: 0.5rem 0 1rem;
     padding: 0;
-  }
-  
-  .hero-image-content {
-    justify-content: center;
-    margin-top: 2rem;
+    width: 100%;
+    max-width: 100%;
   }
   
   .hero-text-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
     text-align: center;
-    padding: 0 1rem;
   }
   
   .typing-text {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    margin: 1rem 0;
   }
   
   .hero-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
     margin-bottom: 1.5rem;
   }
   
-  .hero-features {
-    justify-content: center;
+  .color-selector {
     margin: 1.5rem 0;
+  }
+  
+  .color-options {
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .hero-features {
+    margin: 1.5rem 0;
+    gap: 0.8rem;
+    justify-content: center;
   }
   
   .feature-item {
     font-size: 0.9rem;
     padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+    margin: 1.5rem auto 0;
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    display: block;
   }
   
   .color-selector {
