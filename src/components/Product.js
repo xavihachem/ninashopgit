@@ -52,29 +52,6 @@ const Product = () => {
                 />
               ))}
             </div>
-            <div className="color-options-grid">
-              {products.map((product) => (
-                <div
-                  key={product.id}
-                  className={`color-option ${selectedProduct.id === product.id ? 'active' : ''}`}
-                  onClick={() => handleColorSelect(product)}
-                  onMouseEnter={() => setIsHovered(false)}
-                >
-                  <div className="color-thumbnail-container">
-                    <img 
-                      src={product.image} 
-                      alt={product.colorName} 
-                      className="color-thumbnail" 
-                      loading="lazy"
-                    />
-                    <div className="color-selection-indicator">
-                      <div className="checkmark">✓</div>
-                    </div>
-                  </div>
-                  <span className="color-name">{product.colorName}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
