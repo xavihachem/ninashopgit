@@ -98,21 +98,7 @@ main {
 .section {
   padding: var(--section-padding);
   position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
   overflow: hidden;
-}
-
-#order {
-  background-color: #f9f9f9;
-  justify-content: center;
-  text-align: center;
-}
-
-#order h2 {
-  margin-bottom: 2rem;
-  color: #2d3436;
 }
 
 .container {
