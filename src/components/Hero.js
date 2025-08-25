@@ -95,7 +95,7 @@ const Hero = () => {
               className="cta-button"
               onClick={scrollToProduct}
             >
-              اطلب الآن - 49.99 ريال
+              اطلب الآن - 2500 دينار جزائري
             </button>
           </div>
         </div>
