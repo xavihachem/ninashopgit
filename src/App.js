@@ -35,11 +35,11 @@ function App() {
     <div className="App" dir="ltr">
       <Navbar />
       <main>
-        <section id="home" className="section">
-          <Hero />
-        </section>
         <section id="product" className="section">
           <Product />
+        </section>
+        <section id="home" className="section">
+          <Hero />
         </section>
         <section id="usage" className="section">
           <UsageInstructions />
