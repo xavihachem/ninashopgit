@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Product from './components/Product';
 import UsageInstructions from './components/UsageInstructions';
+import Footer from './components/Footer';
 
 function App() {
   // Add smooth scrolling for anchor links
@@ -41,14 +42,14 @@ function App() {
         <section id="order" className="section">
           {/* Order section content */}
         </section>
-        <section id="product" className="section">
-          <Product />
-        </section>
         <section id="usage" className="section">
           <UsageInstructions />
         </section>
-       
+        <section id="product" className="section">
+          <Product />
+        </section>
       </main>
+      <Footer />
     </div>
   );
 }
