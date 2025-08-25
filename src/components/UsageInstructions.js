@@ -204,11 +204,12 @@ const UsageInstructions = () => {
                       key={color.id}
                       className={`color-option ${formData.color === color.value ? 'selected' : ''}`}
                       onClick={() => setFormData({...formData, color: color.value})}
-                      style={{ backgroundColor: color.id === 'white' ? '#ffffff' : color.id === 'grey' ? '#808080' : '#8B4513' }}
+                      style={{ 
+                        backgroundColor: color.id === 'white' ? '#ffffff' : color.id === 'grey' ? '#808080' : '#8B4513',
+                        border: formData.color === color.value ? '3px solid #ff6b6b' : '2px solid #e0e0e0'
+                      }}
                       title={color.name}
-                    >
-                      {formData.color === color.value && <span className="checkmark">✓</span>}
-                    </div>
+                    />
                   ))}
                 </div>
               </div>
