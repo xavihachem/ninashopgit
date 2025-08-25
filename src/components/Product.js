@@ -21,7 +21,7 @@ const Product = () => {
   }, [isHovered]);
 
   return (
-    <section className="product-section" id="product">
+    <section className="product-section">
       <div className="product-container">
         <h2 className="section-title">
           <span className="title-text">اكتشف منتجاتنا</span>

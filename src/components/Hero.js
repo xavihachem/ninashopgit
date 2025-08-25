@@ -71,9 +71,9 @@ const Hero = () => {
             <button 
               className="cta-button"
               onClick={() => {
-                const productSection = document.getElementById('product');
-                if (productSection) {
-                  productSection.scrollIntoView({ behavior: 'smooth' });
+                const usageSection = document.getElementById('usage');
+                if (usageSection) {
+                  usageSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
             >
@@ -99,9 +99,9 @@ const Hero = () => {
             <button 
               className="cta-button"
               onClick={() => {
-                const productSection = document.getElementById('product');
-                if (productSection) {
-                  productSection.scrollIntoView({ behavior: 'smooth' });
+                const usageSection = document.getElementById('usage');
+                if (usageSection) {
+                  usageSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
             >
