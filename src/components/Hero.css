@@ -57,6 +57,7 @@
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  margin: 1.5rem 0;
   flex-wrap: wrap;
 }
 
@@ -65,32 +66,43 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.color-option:hover {
-  transform: translateY(-3px);
-}
-
-.color-option.active .color-circle {
-  border: 3px solid #ff6B6B;
-  transform: scale(1.1);
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem;
 }
 
 .color-circle {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
   margin-bottom: 0.5rem;
-  border: 2px solid #eee;
-  transition: all 0.2s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-option:hover .color-circle {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.color-option.active .color-circle {
+  border: 3px solid #ff6B6B;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
 }
 
 .color-name {
   font-size: 0.9rem;
-  color: #555;
+  color: #333;
+  margin-top: 0.25rem;
   font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.color-option.active .color-name {
+  color: #ff6B6B;
+  font-weight: 600;
 }
 
 /* Product Image */
@@ -194,6 +206,13 @@
   
   .color-options {
     justify-content: flex-start;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .color-circle {
+    width: 36px;
+    height: 36px;
   }
   
   .product-image-container {
