@@ -6,9 +6,30 @@ import greyProduct from '../assets/product6.jpg';
 import brownProduct from '../assets/product4.jpg';
 
 const products = [
-  { id: 'white', colorName: 'أبيض', image: whiteProduct, color: '#ffffff' },
-  { id: 'grey', colorName: 'رمادي', image: greyProduct, color: '#808080' },
-  { id: 'brown', colorName: 'بني', image: brownProduct, color: '#8B4513' },
+  { 
+    id: 'white', 
+    colorName: 'أبيض', 
+    image: whiteProduct, 
+    color: '#ffffff',
+    pattern: 'linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0 100%), linear-gradient(45deg, #f0f0f0 25%, #ffffff 25%, #ffffff 75%, #f0f0f0 75%, #f0f0f0 100%)',
+    patternSize: '20px 20px',
+    patternPosition: '0 0, 10px 10px'
+  },
+  { 
+    id: 'grey', 
+    colorName: 'رمادي', 
+    image: greyProduct, 
+    color: '#6c757d',
+    shadow: '0 2px 4px rgba(0,0,0,0.1)'
+  },
+  { 
+    id: 'brown', 
+    colorName: 'بني', 
+    image: brownProduct, 
+    color: '#8d6e63',
+    gradient: 'linear-gradient(145deg, #a1887f 0%, #8d6e63 50%, #6d4c41 100%)',
+    shadow: '0 2px 4px rgba(0,0,0,0.1)'
+  },
 ];
 
 const Hero = () => {
@@ -80,10 +101,18 @@ const Hero = () => {
                     key={product.id}
                     className={`color-option ${selectedProduct.id === product.id ? 'active' : ''}`}
                     onClick={() => handleColorSelect(product)}
+                    data-color={product.id}
                   >
                     <div 
                       className="color-circle" 
-                      style={{ backgroundColor: product.color }}
+                      style={{
+                        background: product.gradient || product.color,
+                        backgroundImage: product.pattern,
+                        backgroundSize: product.patternSize,
+                        backgroundPosition: product.patternPosition,
+                        boxShadow: product.shadow,
+                        border: `2px solid ${product.id === 'white' ? '#e0e0e0' : 'rgba(0,0,0,0.1)'}`
+                      }}
                     ></div>
                     <span className="color-name">{product.colorName}</span>
                   </div>
