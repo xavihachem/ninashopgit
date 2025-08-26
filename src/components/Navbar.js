@@ -26,15 +26,28 @@ const Navbar = () => {
 
   const navLinks = [
     { id: 'home', text: 'الرئيسية' },
-    { id: 'product', text: 'المنتج' },
+    { id: 'order', text: 'الطلب الآن' },
     { id: 'usage', text: 'طريقة الاستخدام' },
-    { id: 'order', text: 'الطلب الان' }
+    { id: 'product', text: 'المنتج' },
   ];
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
+  const scrollToSection = (sectionId) => {
+    // Special handling for order section which is inside usage section
+    if (sectionId === 'order') {
+      const usageSection = document.getElementById('usage');
+      if (usageSection) {
+        const orderSection = usageSection.querySelector('.order-section');
+        if (orderSection) {
+          orderSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setIsMenuOpen(false);
+          return;
+        }
+      }
+    }
+    
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setIsMenuOpen(false);
     }
   };
